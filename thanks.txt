@@ -1,0 +1,6 @@
+Agradeço a todos os alunos que ajudaram e me motivaram durante a preparação dessas notas de aula. 
+Em particular, agradeço a:
+- Arthur Pasqualotto, 
+pela prova de que para a função sgn é equivalente por troca pares distantes ou pares vizinhos de índices.
+- Cristiane Fontana, 
+pela prova que 0|v>=|0>, e pela propriedade necessária: (a+b)|v>=a|v>+b|v>.
