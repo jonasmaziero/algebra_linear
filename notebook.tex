@@ -280,12 +280,12 @@
     
 
     
-    \paragraph{Notas de aula: Mecânica Quântica, Autor: Jonas Maziero,
+    \subsection{Notas de aula: Mecânica Quântica, Autor: Jonas Maziero,
 Departamento de Física,
 UFSM}\label{notas-de-aula-mecuxe2nica-quuxe2ntica-autor-jonas-maziero-departamento-de-fuxedsica-ufsm}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}}\PY{k}{run} init.ipynb
+{\color{incolor}In [{\color{incolor}2}]:} \PY{o}{\PYZpc{}}\PY{k}{run} init.ipynb
 \end{Verbatim}
 
 
@@ -301,10 +301,11 @@ A(\sum_{j}c_{j}|v_{j}\rangle) = \sum_{j}c_{j}A(|v_{j}\rangle).
 \end{equation}
 
 Além disso, exigiremos que se \(A,B:V\rightarrow W\) são operadores
-lineares, então \(\forall|v\rangle\in V\) devemos ter
+lineares, então \(\forall|v\rangle\in V\) e
+\(\alpha,\beta\in\mathbb{F}\) devemos ter
 
 \begin{equation}
-(A+B)(|v\rangle) = A(|v\rangle)+B(|v\rangle).
+(\alpha A+\beta B)(|v\rangle) = \alpha A(|v\rangle)+\beta B(|v\rangle).
 \end{equation}
 
 \emph{OBS:} Quando \(A:V\rightarrow V\) dizemos que \(A\) está definido
@@ -318,18 +319,18 @@ importantes são o operdor identidade, definido por
 e o operador nulo, definido por
 
 \begin{equation}
-\mathbb{0}_{V}|v\rangle=|\oslash\rangle\text{, }\forall |v\rangle\in V.
+\mathbb{O}_{V}|v\rangle=|\oslash\rangle\text{, }\forall |v\rangle\in V.
 \end{equation}
 
-\emph{OBS:} Como qualquer vetor \(|v\rangle\in V\) pode ser escrito como
-uma combinação linear dos vetores de uma certa base
+\textbf{OBS:} Como qualquer vetor \(|v\rangle\in V\) pode ser escrito
+como uma combinação linear dos vetores de uma certa base
 \(\{|w_{j}\rangle\}_{j=1}^{\dim V}\), i.e.,
 \(|v\rangle=\sum_{j}c_{j}|w_{j}\rangle\) com \(c_{j}\in\mathbb{F}\), se
 sabemos como um certo operador linear atua em uma base qualquer de
 \(V\), sabemos como ele atua em todos os vetores de \(V\) pois
 
 \begin{equation}
-A(|v\rangle) = A(\sum_{j}c_{j}|w_{j}\rangle)=\sum_{j}c_{j}A(|w_{j}\rangle). 
+A(|v\rangle) = A\left(\sum_{j}c_{j}|w_{j}\rangle\right)=\sum_{j}c_{j}A(|w_{j}\rangle). 
 \end{equation}
 
     \subsubsection{Matrizes são operadores
@@ -354,16 +355,19 @@ olhemos para
 \end{equation}
 
 o que implica que
-\(A(\sum_{j}c_{j}|w_{j}\rangle)=\sum_{j}c_{j}A(|w_{j}\rangle)\) e
-portanto que matrizes são operadores lineares.
+\(A\left(\sum_{j}c_{j}|w_{j}\rangle\right)=\sum_{j}c_{j}A(|w_{j}\rangle)\)
+e portanto que matrizes são operadores lineares.
 
-Ademais, como \((A+B)_{j,k}=A_{j,k}+B_{j,k}\), teremos que
+Ademais, como \((\alpha A+\beta B)_{j,k}=\alpha A_{j,k}+\beta B_{j,k}\),
+teremos que
 
-\begin{equation}
-((A+B)(|v\rangle))_{j} = \sum_{k}(A+B)_{j,k}|v\rangle_{k} = \sum_{k}(A_{j,k}+B_{j,k})|v\rangle_{k} = \sum_{k}A_{j,k}|v\rangle_{k} + \sum_{k}B_{j,k}|v\rangle_{k} = (A|v\rangle)_{j}+ (B|v\rangle)_{j}
-\end{equation}
+\begin{align}
+((\alpha A+\beta B)(|v\rangle))_{j} &= \sum_{k}(\alpha A+\beta B)_{j,k}|v\rangle_{k} = \sum_{k}(\alpha A_{j,k}+\beta B_{j,k})|v\rangle_{k} = \alpha\sum_{k}A_{j,k}|v\rangle_{k} + \beta\sum_{k}B_{j,k}|v\rangle_{k} \\ 
+& = \alpha(A|v\rangle)_{j}+ \beta(B|v\rangle)_{j}
+\end{align}
 
-e portanto \((A+B)(|v\rangle)= A(|v\rangle) + B(|v\rangle)\).
+e portanto
+\((\alpha A+\beta B)(|v\rangle)= \alpha A(|v\rangle) + \beta B(|v\rangle)\).
 
 Os operadores identidade e nulo são identificados, respectivamente, com
 
@@ -379,11 +383,11 @@ Consideremos \(A:V\rightarrow W\) e duas bases
 \(\{|w_{k}\rangle\}_{k=1}^{\dim W}\) de \(W\). Sabemos que \(A\) atuando
 em um vetor de \(V\) retorna um vetor de \(W\), i.e.,
 \(A(|v_{j}\rangle)\in W\), que por sua vez pode ser escrito como uma
-combinação linear dos vetores de qualquer uma das bases de \(W\). Então,
-para \(j=1,\cdots,\dim V\), podemos escrever
+combinação linear dos vetores de qualquer uma das bases de \(W\). Então
+podemos escrever
 
 \begin{equation}
-A(|v_{j}\rangle) = \sum_{k=1}^{\dim W}A_{k,j}|w_{k}\rangle,
+A(|v_{j}\rangle) = \sum_{k=1}^{\dim W}A_{k,j}|w_{k}\rangle, \text{ para } j=1,\cdots,\dim V,
 \end{equation}
 
 onde os coeficientes da combinação linear, \(A_{k,j}\in\mathbb{F}\),
@@ -462,8 +466,8 @@ Seguindo,
 \end{align}
 
 \textbf{Exercício:} Forneça a representação matricial para
-\(C=B\circ A\), com \(A\) e \(B\) os operadores definidos no último
-exemplo e exercício, respectivamente.
+\(C=B\circ A\), com \(A\) e \(B\) sendo os operadores definidos no
+último exemplo e exercício, respectivamente.
 
     \subsection{Autovalores e autovetores}\label{autovalores-e-autovetores}
 
@@ -524,17 +528,17 @@ c_{n}\alpha^{n}+c_{n-1}\alpha^{n-1}+\cdots+c_{2}\alpha^{2}+c_{1}\alpha+c_{0}=0,
 que possui \(n\) raízes complexas, que são os autovalores de \(A\).
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{c}\PY{p}{,}\PY{n}{d} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a b c d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{}A = Matrix([[a,b],[c,d]])}
-        \PY{n}{A} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{}A}
-        \PY{n}{A}\PY{o}{.}\PY{n}{eigenvects}\PY{p}{(}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} Na lista abaixo aparecem (autovalor, multiplicidade, autovetor)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{c}\PY{p}{,}\PY{n}{d} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a b c d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{A} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{c}\PY{p}{,}\PY{n}{d}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}A = Matrix([[0,\PYZhy{}1j],[1j,0]])}
+         \PY{c+c1}{\PYZsh{}A}
+         \PY{n}{A}\PY{o}{.}\PY{n}{eigenvects}\PY{p}{(}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Na lista abaixo aparecem (autovalor, multiplicidade, autovetor)}
 \end{Verbatim}
 
-\texttt{\color{outcolor}Out[{\color{outcolor}7}]:}
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
     
-    $$\left [ \left ( -1.0, \quad 1, \quad \left [ \left[\begin{matrix}1.0 i\\1.0\end{matrix}\right]\right ]\right ), \quad \left ( 1.0, \quad 1, \quad \left [ \left[\begin{matrix}- 1.0 i\\1.0\end{matrix}\right]\right ]\right )\right ]$$
+    $$\left [ \left ( \frac{a}{2} + \frac{d}{2} - \frac{1}{2} \sqrt{a^{2} - 2 a d + 4 b c + d^{2}}, \quad 1, \quad \left [ \left[\begin{matrix}- \frac{b}{\frac{a}{2} - \frac{d}{2} + \frac{1}{2} \sqrt{a^{2} - 2 a d + 4 b c + d^{2}}}\\1\end{matrix}\right]\right ]\right ), \quad \left ( \frac{a}{2} + \frac{d}{2} + \frac{1}{2} \sqrt{a^{2} - 2 a d + 4 b c + d^{2}}, \quad 1, \quad \left [ \left[\begin{matrix}- \frac{b}{\frac{a}{2} - \frac{d}{2} - \frac{1}{2} \sqrt{a^{2} - 2 a d + 4 b c + d^{2}}}\\1\end{matrix}\right]\right ]\right )\right ]$$
 
     
 
@@ -583,15 +587,17 @@ vamos considerar uma base ortonormal
 \(|w\rangle = \sum_{j=1}^{\dim V}w_{j}|b_{j}\rangle\). Assim
 
 \begin{align}
-(|v\rangle,A|w\rangle) & = (\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,A\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) = (\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}A|b_{k}\rangle) = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(|b_{j}\rangle,\sum_{l=1}^{\dim V}A_{l,k}|b_{l}\rangle) \\ 
-& = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}A_{l,k}(|b_{j}\rangle,|b_{l}\rangle) = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}A_{l,k}\delta_{j,l} = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}A_{j,k}
+(|v\rangle,A|w\rangle) & = (\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,A\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) = (\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}A|b_{k}\rangle) \\ 
+& = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(|b_{j}\rangle,\sum_{l=1}^{\dim V}A_{l,k}|b_{l}\rangle) = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}A_{l,k}(|b_{j}\rangle,|b_{l}\rangle) = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}A_{l,k}\delta_{j,l} \\ 
+& = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}A_{j,k}
 \end{align}
 
 e
 
 \begin{align}
-(A^{\dagger}|v\rangle,|w\rangle) & = (A^{\dagger}\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) = (\sum_{j=1}^{\dim V}v_{j}A^{\dagger}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(\sum_{l=1}^{\dim V}(A^{\dagger})_{l,j}|b_{l}\rangle,|b_{k}\rangle) \\ 
-& = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{l,j})^{*}(|b_{l}\rangle,|b_{k}\rangle) = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{l,j})^{*}\delta_{l,k} = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{k,j})^{*}.
+(A^{\dagger}|v\rangle,|w\rangle) & = (A^{\dagger}\sum_{j=1}^{\dim V}v_{j}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) = (\sum_{j=1}^{\dim V}v_{j}A^{\dagger}|b_{j}\rangle,\sum_{k=1}^{\dim V}w_{k}|b_{k}\rangle) \\ 
+& = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(\sum_{l=1}^{\dim V}(A^{\dagger})_{l,j}|b_{l}\rangle,|b_{k}\rangle)  = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{l,j})^{*}(|b_{l}\rangle,|b_{k}\rangle) = \sum_{j,k,l=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{l,j})^{*}\delta_{l,k} \\ 
+& = \sum_{j,k=1}^{\dim V}v^{*}_{j}w_{k}(A^{\dagger}_{k,j})^{*}.
 \end{align}
 
 Ou seja,
@@ -650,6 +656,10 @@ Por conseguinte, para este espaço vetorial, teremos
 P_{W} = \sum_{j=1}^{\dim W}|w_{j}\rangle\langle w_{j}|.
 \end{equation}
 
+\textbf{Exercício:} Escreva explicitamento o projetor em um subespaço do
+espaço de Hilbert
+\(\mathcal{H}=\left(\mathbb{C}^{n\mathrm{x}n},\langle A|B\rangle_{hs}=Tr(A^{\dagger}B)\right)\).
+
     \emph{OBS:} \(P_{W}\) atua como \(\mathbb{I}_{W}\) nos vetores de \(W\).
 Consideremos um vetor qualquer \(|w\rangle\in W\) decomposto na base
 ortonormal \(\{|w_{j}\rangle\}_{j=1}^{\dim W}\) como (veja as notas
@@ -690,20 +700,20 @@ e
 com \(\langle x_{j}|w_{k}\rangle=0\text{ } \forall j,k\), então
 
 \begin{equation}
-P_{W}\circ P_{X} = P_{X}\circ P_{W} = \mathbb{0}.
+P_{W}\circ P_{X} = P_{X}\circ P_{W} = \mathbb{O}_{V}.
 \end{equation}
 
 \subsubsection{Adjunto de projetores}\label{adjunto-de-projetores}
 
 Vamos verificar que o operador adjunto de um projetor é ele mesmo.
-considera \(\forall|a\rangle,|b\rangle\in\mathcal{H}\)
+Considera \(\forall|a\rangle,|b\rangle\in\mathcal{H}\)
 
 \begin{align}
 & (P_{W}^{\dagger}|a\rangle,|b\rangle)=(|a\rangle,P_{w}(|b\rangle)) = (|a\rangle,\sum_{j}\langle w_{j}|b\rangle|w_{j}\rangle)  = \sum_{j}\langle w_{j}|b\rangle(|a\rangle,|w_{j}\rangle) = \sum_{j}\langle w_{j}|b\rangle\langle w_{j}|a\rangle^{*} \\
 & = \sum_{j}\langle w_{j}|a\rangle^{*}(|w_{j}\rangle,|b\rangle) = (\sum_{j}\langle w_{j}|a\rangle|w_{j}\rangle,|b\rangle) = (P_{W}|a\rangle,|b\rangle).
 \end{align}
 
-\textbf{Exercício:} Verifique esse propriedade explicitamente
+\textbf{Exercício:} Verifique essa propriedade explicitamente
 considerando os projetores de \(\mathbb{C}^{n}\).
 
 \subsubsection{Complemento ortonormal}\label{complemento-ortonormal}
@@ -717,9 +727,10 @@ P_{W}+P_{W^{\perp}}=\mathbb{I}_{V}.
 
 Para esses projetores, teremos
 
-\begin{equation}
-P_{W}\circ P_{W^{\perp}}(|v\rangle) = P_{W}\circ(\mathbb{I}_{V}-P_{W})(|v\rangle) = P_{W}\circ\mathbb{I}_{V}(|v\rangle)-P_{W}\circ P_{W}(|v\rangle) = P_{W}(|v\rangle)-P_{W}(|v\rangle) = \mathbb{0}_{V}(|v\rangle).
-\end{equation}
+\begin{align}
+P_{W}\circ P_{W^{\perp}}(|v\rangle) & = P_{W}\circ(\mathbb{I}_{V}-P_{W})(|v\rangle) = P_{W}\circ\mathbb{I}_{V}(|v\rangle)-P_{W}\circ P_{W}(|v\rangle) = P_{W}(|v\rangle)-P_{W}(|v\rangle) \\ 
+& = \mathbb{O}_{V}(|v\rangle).
+\end{align}
 
 \textbf{Exercício:} Para \(\mathbb{C}^{3}\), considere o projetor
 \(P_{1}=|1\rangle\langle 1|\) com
@@ -728,24 +739,24 @@ complementos ortonormais para \(P_{1}\)?
 
     \section{Operadores normais}\label{operadores-normais}
 
-Um operaor \(A\) definido no espaço de Hilbert \(\mathcal{H}\) é dito
+Um operador \(A\) definido no espaço de Hilbert \(\mathcal{H}\) é dito
 normal se
 
 \begin{equation}
 A\circ A^{\dagger} = A^{\dagger}\circ A.
 \end{equation}
 
-\subsection{Teorema (decomposição
+\section{Teorema (decomposição
 espectral)}\label{teorema-decomposiuxe7uxe3o-espectral}
 
 Existe uma base ortonormal de \(\mathcal{H}\) constituída por
 autovetores do operador linear \(A:\mathcal{H}\rightarrow\mathcal{H}\)
-se e somente se ele for normal.
+se e somente se este for normal.
 
-\paragraph{Prova}\label{prova}
+\subsection{Prova}\label{prova}
 
 Vamos começar assumindo a existência de uma base ortonormal
-\(\{|a\rangle\}\) de autovetores de \(A\), i.e.,
+\(\{|a\rangle\}\in\mathcal{H}\) de autovetores de \(A\), i.e.,
 \(A|a\rangle := a|a\rangle\) (note que aqui usamos \(a\) também para os
 autovalores). Consideremos o \emph{projetor unidimensional} aplicado a
 um vetor qualquer \(|v\rangle\in\mathcal{H}\):
@@ -780,9 +791,10 @@ Portanto, nesse caso,
 \sum_{a}P_{a}=\mathbb{I}_{\mathcal{H}}.
 \end{equation}
 
-    \textbf{Exercício:} Verifique que a decomposição espectral para o
-adjunto de \(A=\sum_{a} aP_{a}\) é
-\(A^{\dagger} = \sum_{a} a^{*}P_{a}\).
+    \textbf{Exercício:} Assumindo que existe uma base ortonormal
+\(\{|a\rangle\}\in\mathcal{H}\) tal que
+\(A^{\dagger}|a\rangle := a^{*}|a\rangle\), verifique que podemos
+escrever a decomposição espectral \(A^{\dagger} = \sum_{a} a^{*}P_{a}\).
 
 Com isso podemos escrever
 
@@ -805,11 +817,12 @@ Por conseguinte,
 \end{equation}
 
     Passemos para a segunda parte da prova, onde assumimos que \(A\) é
-normal e mostramos que existe uma base ortonormal que o diagonaliza.
-Começamos considerando o autovalor \(a\) de \(A\) e o projetor \(P_{a}\)
-no subespaço \(\mathcal{H}_{a}\) de \(\mathcal{H}\) gerado pelos
-autovetores de \(A\) correspondentes ao autovalor \(a\). Seja
-\(P_{a^{\perp}}\) o complemento ortonormal de \(P_{a}\). Segue assim que
+normal, i.e. que \(A\circ A^{\dagger}=A^{\dagger}\circ A\), e mostramos
+que existe uma base ortonormal que o diagonaliza. Começamos considerando
+o autovalor \(a\) de \(A\) e o projetor \(P_{a}\) no subespaço
+\(\mathcal{H}_{a}\) de \(\mathcal{H}\) gerado pelos autovetores de \(A\)
+correspondentes ao autovalor \(a\). Seja \(P_{a^{\perp}}\) o complemento
+ortonormal de \(P_{a}\). Segue assim que
 
 \begin{align}
 A & = \mathbb{I}_{\mathcal{H}}\circ A\circ \mathbb{I}_{\mathcal{H}} = (P_{a}+P_{a^{\perp}})\circ A\circ(P_{a}+P_{a^{\perp}}) \\
@@ -819,8 +832,8 @@ A & = \mathbb{I}_{\mathcal{H}}\circ A\circ \mathbb{I}_{\mathcal{H}} = (P_{a}+P_{
 Agora, \(\forall|v\rangle\in\mathcal{H}\),
 
 \begin{align}
-(A\circ P_{a})(|v\rangle) & = A(P_{a}(|v\rangle)) = A\left(\sum_{j=1}^{\dim\mathcal{H}_{a}}\langle a_{j}|v\rangle|a_{j}\rangle\right) = \sum_{j=1}^{\dim\mathcal{H}_{a}}\langle a_{j}|v\rangle A(|a_{j}\rangle) = \sum_{j=1}^{\dim\mathcal{H}_{a}}\langle a_{j}|v\rangle a|a_{j}\rangle = a\sum_{j=1}^{\dim\mathcal{H}_{a}}\langle a_{j}|v\rangle|a_{j}\rangle \\
-& = aP_{a}(|v\rangle).
+(A\circ P_{a})(|v\rangle) & = A(P_{a}(|v\rangle)) = A\left(\sum_{a}\langle a|v\rangle|a\rangle\right) = \sum_{a}\langle a|v\rangle A(|a\rangle) = \sum_{a}\langle a|v\rangle a|a\rangle \\ 
+& = a\sum_{a}\langle a|v\rangle|a\rangle = aP_{a}(|v\rangle).
 \end{align}
 
 \textbf{Exercício:} Verifique que \(A^{\dagger}\circ P_{a}=a^{*}P_{a}\).
@@ -829,19 +842,19 @@ Assim
 
 \begin{align}
 & P_{a}\circ A\circ P_{a} = P_{a}\circ aP_{a} = a P_{a}\circ P_{a} = aP_{a}, \\
-& P_{a^{\perp}}\circ A\circ P_{a} = P_{a^{\perp}}\circ aP_{a}=aP_{a^{\perp}}\circ P_{a}=\mathbb{0}_{\mathcal{H}}.
+& P_{a^{\perp}}\circ A\circ P_{a} = P_{a^{\perp}}\circ aP_{a}=aP_{a^{\perp}}\circ P_{a}=\mathbb{O}_{\mathcal{H}}.
 \end{align}
 
 Com isso teremos que
 
 \begin{align}
-(P_{a}\circ A\circ P_{a^{\perp}})^{\dagger} & = P_{a^{\perp}}^{\dagger}\circ A^{\dagger}\circ P_{a}^{\dagger} = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a} = P_{a^{\perp}}\circ a^{*}P_{a} = a^{*}P_{a^{\perp}}\circ P_{a} = a^{*}\mathbb{0}_{\mathcal{H}} = \mathbb{0}_{\mathcal{H}}.
+(P_{a}\circ A\circ P_{a^{\perp}})^{\dagger} & = P_{a^{\perp}}^{\dagger}\circ A^{\dagger}\circ P_{a}^{\dagger} = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a} = P_{a^{\perp}}\circ a^{*}P_{a} = a^{*}P_{a^{\perp}}\circ P_{a} = a^{*}\mathbb{O}_{\mathcal{H}} = \mathbb{O}_{\mathcal{H}}.
 \end{align}
 
     Juntando esses resultados obtemos
 
 \begin{equation}
-A = aP_{a} + \mathbb{0}_{\mathcal{H}} + \mathbb{0}_{\mathcal{H}} + P_{a^{\perp}}\circ A\circ P_{a^{\perp}} = aP_{a} + P_{a^{\perp}}\circ A\circ P_{a^{\perp}}.
+A = aP_{a} + \mathbb{O}_{\mathcal{H}} + \mathbb{O}_{\mathcal{H}} + P_{a^{\perp}}\circ A\circ P_{a^{\perp}} = aP_{a} + P_{a^{\perp}}\circ A\circ P_{a^{\perp}}.
 \end{equation}
 
 Seguindo, verifiquemos que o operador
@@ -849,12 +862,13 @@ Seguindo, verifiquemos que o operador
 se \(A\) é normal
 
 \begin{align}
- (P_{a^{\perp}}\circ A\circ P_{a^{\perp}})^{\dagger}\circ(P_{a^{\perp}}\circ A\circ P_{a^{\perp}})  & = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}}\circ P_{a^{\perp}}\circ A\circ P_{a^{\perp}} = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}}\circ A\circ P_{a^{\perp}} \\ 
+& (P_{a^{\perp}}\circ A\circ P_{a^{\perp}})^{\dagger}\circ(P_{a^{\perp}}\circ A\circ P_{a^{\perp}}) \\
+& = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}}\circ P_{a^{\perp}}\circ A\circ P_{a^{\perp}} = P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}}\circ A\circ P_{a^{\perp}} \\ 
 & = P_{a^{\perp}}\circ A^{\dagger}\circ(\mathbb{0}_{\mathcal{H}}+ P_{a^{\perp}}\circ A\circ P_{a^{\perp}}) = P_{a^{\perp}}\circ A^{\dagger}\circ(P_{a}\circ A\circ P_{a^{\perp}} + P_{a^{\perp}}\circ A\circ P_{a^{\perp}}) \\ 
 & = P_{a^{\perp}}\circ A^{\dagger}\circ((P_{a}+P_{a^{\perp}})\circ A\circ P_{a^{\perp}}) = P_{a^{\perp}}\circ A^{\dagger}\circ (\mathbb{I}_{\mathcal{H}}\circ A\circ P_{a^{\perp}}) = P_{a^{\perp}}\circ A^{\dagger}\circ A\circ P_{a^{\perp}} \\
 & = P_{a^{\perp}}\circ A\circ A^{\dagger}\circ P_{a^{\perp}} = P_{a^{\perp}}\circ A\circ\mathbb{I}_{\mathcal{H}}\circ A^{\dagger}\circ P_{a^{\perp}} = P_{a^{\perp}}\circ A\circ(P_{a}+P_{a^{\perp}})\circ A^{\dagger}\circ P_{a^{\perp}} \\
-& = (P_{a^{\perp}}\circ A\circ P_{a}+P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ A^{\dagger}\circ P_{a^{\perp}} =  (\mathbb{0}_{\mathcal{H}}+P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ A^{\dagger}\circ P_{a^{\perp}} \\
-& = (P_{a^{\perp}}\circ A\circ P_{a^{\perp}})(P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}}).
+& = (P_{a^{\perp}}\circ A\circ P_{a}+P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ A^{\dagger}\circ P_{a^{\perp}} =  (\mathbb{O}_{\mathcal{H}}+P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ A^{\dagger}\circ P_{a^{\perp}} \\
+& = (P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ(P_{a^{\perp}}\circ A^{\dagger}\circ P_{a^{\perp}})= (P_{a^{\perp}}\circ A\circ P_{a^{\perp}})\circ(P_{a^{\perp}}\circ A\circ P_{a^{\perp}})^{\dagger}.
 \end{align}
 
 Assim, se repetimos o procedimento feito inicialmete para \(A\) no caso
@@ -864,18 +878,23 @@ de \(\tilde{A}\) teremos
 A = aP_{a} + \tilde{a}P_{\tilde{a}} + P_{\tilde{a}^{\perp}}\circ \tilde{A}\circ P_{\tilde{a}^{\perp}},
 \end{equation}
 
-com \(P_{\tilde{a}^{\perp}}\circ \tilde{A}\circ P_{\tilde{a}^{\perp}}\)
+com
+\(P_{\tilde{\tilde{a}}}:=P_{\tilde{a}^{\perp}}\circ \tilde{A}\circ P_{\tilde{a}^{\perp}}\)
 sendo também um operador normal. Então, se repetimos esse processo até
 completarmos o espaço, i.e., até que
-\(P_{a}+P_{\tilde{a}}+\cdots=\mathbb{I}_{\mathcal{H}}\), teremos obtido
-a decomposição espectral de \(A\). Com isso completamos a prova do
-teorema
+\(P_{a}+P_{\tilde{a}}+P_{\tilde{\tilde{a}}}+\cdots=\mathbb{I}_{\mathcal{H}}\),
+teremos obtido a decomposição espectral de \(A\). Com isso completamos a
+prova do teorema
 
 \begin{equation}
 A\circ A^{\dagger}=A^{\dagger}\circ A\Rightarrow \exists{\{P_{a}\}}\mid \sum_{a}P_{a}=\mathbb{I}_{\mathcal{H}}\text{ e }A=\sum_{a}aP_{a}.
 \end{equation}
 
-    \subsection{Operadores Hermitianos}\label{operadores-hermitianos}
+\textbf{Exercício:} Verifique que a matriz
+\(A = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}\)
+é normal e obtenha sua decomposição espectral.
+
+    \section{Operadores Hermitianos}\label{operadores-hermitianos}
 
 Esses são os operadores usados em Mecânica Quântica para descrever
 quantidades observáveis experimentalmente. Um operador linear
@@ -888,17 +907,18 @@ A^{\dagger}=A.
 
 \emph{OBS:} Se um operador linear
 \(A:\mathcal{H}\rightarrow\mathcal{H}\) é Hermitiano, ele também é
-normal e possui uma decomposição espectral. Então, se
-\(A|a\rangle=a|a\rangle\) e \(A|a'\rangle=a'|a'\rangle\) com
-\(a\ne a'\), devemos ter \(\langle a|a\rangle=0\), i.e., os autovetores
-correspondentes são ortogonais.
+normal e por conseguinte possui uma decomposição espectral em uma base
+ortonormal. Então, se \(A|a\rangle=a|a\rangle\) e
+\(A|a'\rangle=a'|a'\rangle\) com \(a\ne a'\), devemos ter
+\(\langle a|a'\rangle=0\), i.e., os autovetores correspondentes são
+ortogonais.
 
-\subsubsection{Teorema}\label{teorema}
+\subsection{Teorema}\label{teorema}
 
 Operdores Hermitianos possuem autovalores reais e seus autovetores
 correspondentes a autovalores diferentes são ortogonais.
 
-\paragraph{Prova}\label{prova}
+\subsubsection{Prova}\label{prova}
 
 Considera um par qualquer de autovalores de \(A\), i.e., considera
 \(A|a\rangle=a|a\rangle\) e \(A|a'\rangle=a'|a'\rangle\). Temos assim
@@ -906,8 +926,7 @@ que
 
 \begin{align}
 & (|a'\rangle,A|a\rangle) = (|a'\rangle,a|a\rangle) = a(|a'\rangle,|a\rangle) \\
-& (A^{\dagger}|a'\rangle,|a\rangle)=(A|a'\rangle,|a\rangle) = (a'|a'\rangle,|a\rangle) \\
-& = a'^{*}(|a'\rangle,|a\rangle).
+& (A^{\dagger}|a'\rangle,|a\rangle)=(A|a'\rangle,|a\rangle) = (a'|a'\rangle,|a\rangle) = a'^{*}(|a'\rangle,|a\rangle).
 \end{align}
 
 Portanto
@@ -916,16 +935,23 @@ Portanto
 (a-a'^{*})\langle a'|a\rangle=0.
 \end{equation}
 
-Vemos assim que se \(a=a'\), \(\langle a|a\rangle\ne 0\) e devemos ter
-\(a-a^{*}=0\Rightarrow \Im(a)=0\Rightarrow a\in\mathbb{R}\).
+Vemos assim que se \(a=a'\), como \(\langle a|a\rangle\ne 0\), devemos
+ter \(a-a^{*}=0\Rightarrow \Im(a)=0\Rightarrow a\in\mathbb{R}\).
+\textbackslash{}
 
-\textbf{Exercício:} Operadores \emph{anti-Hermitianos} são definidos por
-\(A^{\dagger}=-A\). Esses operadores possuem uma decomposição espectral?
-Se sim, prove que os autovalores desse tipo de operador não números
-imaginários puros e que seus autovetores correspondentes a autovalores
-diferentes são ortogonais.
+\textbf{Exercício:} Verivique que a matriz
+\(\begin{bmatrix} 0&-i\\i&0 \end{bmatrix}\) é Hermitiana. Obtenha seus
+autovalores e autovetores e verifique que estes estão de acordo com o
+último teorema.
 
-    \subsubsection{Comutador}\label{comutador}
+\textbf{Exercício:} Operadores \textbf{anti-Hermitianos} são definidos
+por \(A^{\dagger}=-A\). Mostre que esses operadores possuem uma
+decomposição espectral e que os autovalores desse tipo de operador são
+números imaginários puros e que seus autovetores correspondentes a
+autovalores diferentes são ortogonais.
+
+    \subsection{Comutador e
+anti-comutador}\label{comutador-e-anti-comutador}
 
 O comutador entre dois operadores lineares
 \(A,B:\mathcal{H}\rightarrow\mathcal{H}\) é um operado em
@@ -957,28 +983,31 @@ sendo aqueles operadores que comutam com seu adjunto:
 & [X\circ Y,Z] = X\circ[Y,Z] + [X,Z]\circ Y.
 \end{align}
 
-As matrizes de Pauli são definidas por:
+A matriz identidade \(2\mathrm{x}2\) e as matrizes de Pauli são
+definidas por:
 
 \begin{equation}
+\mathbb{I}_{2} \equiv \sigma_{0} := \begin{bmatrix} 1&0\\0&1 \end{bmatrix}\text{, }
 \sigma_{x} \equiv \sigma_{1} := \begin{bmatrix} 0&1\\1&0 \end{bmatrix}\text{, }
 \sigma_{y} \equiv \sigma_{2} := \begin{bmatrix} 0&-i\\i&0 \end{bmatrix}\text{, }
 \sigma_{z} \equiv \sigma_{3} := \begin{bmatrix} 1&0\\0&-1 \end{bmatrix}\text{, }
 \end{equation}
 
-\textbf{Exercício:} Verifique que para as matrizes de Pauli teremos
+\textbf{Exercício:} Verifique que para as matrizes de Pauli teremos (use
+o código abaixo para facilitar a resolução desses três exercícios)
 
 \begin{equation}
-\sigma_{j}\sigma_{k}=\delta_{j,k}\sigma_{0}+sgn(j,k,l)i\sigma_{l}.
+\sigma_{j}\sigma_{k}=\delta_{j,k}\sigma_{0}+sgn(j,k,l)i\sigma_{l},  \hspace{0.2cm}  j,k=1,2,3.
 \end{equation}
 
 \textbf{Exercício:} verifique que as matrizes de Pauli satisfazem a
 relação de comutação a seguir:
 
 \begin{equation}
-[\sigma_{j},\sigma_{k}]= sgn(j,k,l)2i\sigma_{l}.
+[\sigma_{j},\sigma_{k}]= sgn(j,k,l)2i\sigma_{l},  \hspace{0.2cm}  j,k=1,2,3.
 \end{equation}
 
-O \emph{anti-comutador} entre dois operadores lineares
+O \textbf{anti-comutador} entre dois operadores lineares
 \(A,B:\mathcal{H}\rightarrow\mathcal{H}\) é o operador linear definido
 como
 
@@ -989,35 +1018,55 @@ como
 \textbf{Exercício:} Verifique que as matrizes de Pauli anti-comutam:
 
 \begin{equation}
-\{\sigma_{j},\sigma_{k}\} := \mathbb{0}_{\mathbb{C}^{2}}.
+\{\sigma_{j},\sigma_{k}\} := \mathbb{0}_{\mathbb{C}^{2}}, \hspace{0.2cm} \forall j\ne k \text{ e } j,k=1,2,3.
 \end{equation}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{def} \PY{n+nf}{comm}\PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{B}\PY{p}{)}\PY{p}{:}
-             \PY{k}{return} \PY{n}{A}\PY{o}{*}\PY{n}{B}\PY{o}{\PYZhy{}}\PY{n}{B}\PY{o}{*}\PY{n}{A}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{comm}\PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{B}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{A}\PY{o}{*}\PY{n}{B}\PY{o}{\PYZhy{}}\PY{n}{B}\PY{o}{*}\PY{n}{A}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{pauli}\PY{p}{(}\PY{n}{j}\PY{p}{)}\PY{p}{:}
-            \PY{k}{if} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
-                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-            \PY{k}{if} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
-                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-            \PY{k}{if} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
-                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{}pauli(3)}
-        \PY{c+c1}{\PYZsh{}comm(pauli(1),pauli(2))}
-        \PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{acomm}\PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{B}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{A}\PY{o}{*}\PY{n}{B}\PY{o}{+}\PY{n}{B}\PY{o}{*}\PY{n}{A}
 \end{Verbatim}
 
-\texttt{\color{outcolor}Out[{\color{outcolor}5}]:}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{pauli}\PY{p}{(}\PY{n}{j}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{2}\PY{p}{:}
+                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{n}{j}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{j} \PY{o}{==} \PY{l+m+mi}{3}\PY{p}{:}
+                \PY{k}{return} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{comm}\PY{p}{(}\PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}\PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}14}]:}
     
-    $$\left[\begin{matrix}0 & 1.0 i\\1.0 i & 0\end{matrix}\right]$$
+    $$\left[\begin{matrix}2.0 i & 0\\0 & - 2.0 i\end{matrix}\right]$$
 
     
 
-    \subsection{Teorema (diagonalização
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{acomm}\PY{p}{(}\PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}\PY{n}{pauli}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
+    
+    $$\left[\begin{matrix}0 & 0\\0 & 0\end{matrix}\right]$$
+
+    
+
+    \section{Teorema (diagonalização
 simultânea)}\label{teorema-diagonalizauxe7uxe3o-simultuxe2nea}
 
 Dois operadores lineares Hermitianos
@@ -1028,7 +1077,7 @@ autovetores se e somente se comutarem, i.e.,
 A=\sum_{j}a_{j}P_{j}\text{ e }B=\sum_{j}b_{j}P_{j}\Leftrightarrow [A,B]=\mathbb{0}_{\mathcal{H}}.
 \end{equation}
 
-\subsubsection{Prova}\label{prova}
+\subsection{Prova}\label{prova}
 
 Começamos assumindo que \(A\) e \(B\) são diagonalizados na mesma base
 ortonormal. Assim
@@ -1036,16 +1085,15 @@ ortonormal. Assim
 \begin{align}
 [A,B] & = [\sum_{j}a_{j}P_{j},\sum_{k}b_{k}P_{k}] = \sum_{j,k}a_{j}b_{k}[P_{j},P_{k}] \\
 & = \sum_{j,k}a_{j}b_{k}(P_{j}\circ P_{k} -P_{k}\circ P_{j}) = \sum_{j,k}a_{j}b_{k}(\delta_{j,k}P_{j} - \delta_{k,j}P_{k}) \\
-& = \mathbb{0}_{\mathcal{H}}.
+& = \sum_{j}a_{j}b_{j}(P_{j} - P_{j}) = \mathbb{0}_{\mathcal{H}}.
 \end{align}
 
-Seguindo, assumimos que \(A\circ B=B\circ A\). Assim, considerando a
-decomposição espectral \(A=\sum_{j}a_{j}P_{j}\), teremos
+Seguindo, assumimos que \(A\circ B=B\circ A\). Assim, considerando que a
+decomposição espectral de \(A\) é \(A=\sum_{j}a_{j}P_{j}\), teremos
 
-\begin{align}
-A\circ(B\circ P_{j}) & = (A\circ B)\circ P_{j} = (B\circ A)\circ P_{j} = B\circ (A\circ P_{j}) \\ 
-& = B\circ (a_{j}P_{j}) = a_{j}(B\circ P_{j}).
-\end{align}
+\begin{equation}
+A\circ B\circ P_{j} =  B\circ A\circ P_{j} = B\circ A\circ P_{j} = B\circ a_{j}P_{j} = a_{j}B\circ P_{j}.
+\end{equation}
 
 Para que essa relação seja verdaderia, \(B\) deve levar vetores do
 subespaço gerado pelos autovetores de \(A\) correspondentes ao autovalor
@@ -1056,15 +1104,14 @@ base comum de autovetores de \(A\) e \(B\), completando assim a prova do
 teorema.
 
 Uma maneira mais fácil de entender esta última parte da prova é a
-seguinte. Considera a eq. de autovalores
+seguinte. Considera a eq. de autovalores e autovetores:
 \(A|a_{j}^{(k)}\rangle=a_{j}|a_{j}^{(k)}\rangle\) com
 \(k=1,\cdots,\dim\mathcal{H}_{j}\). Note que
 \(\mathcal{H}_{j}\subseteq\mathcal{H}\) é o subespaço gerado pelo
 autovetores de \(A\) correspondentes ao autovalor \(a_{j}\). Agora,
 
 \begin{align}
-A(B|a_{j}^{(k)}\rangle) & = (A\circ B)(|a_{j}^{(k)}\rangle) = (B\circ A)(|a_{j}^{(k)}\rangle) \\
-& =B(A(|a_{j}^{(k)}\rangle)) = B(a_{j}(|a_{j}^{(k)}\rangle)) \\
+A(B|a_{j}^{(k)}\rangle) & = (A\circ B)(|a_{j}^{(k)}\rangle) = (B\circ A)(|a_{j}^{(k)}\rangle) =B(A(|a_{j}^{(k)}\rangle)) = B(a_{j}(|a_{j}^{(k)}\rangle)) \\
 & = a_{j}(B|a_{j}^{(k)}\rangle).
 \end{align}
 
@@ -1074,35 +1121,32 @@ autovalor \(a_{j}\). Portanto
 existe uma base de \(\mathcal{H}_{j}\) que o diagonaliza, e que também
 diagonaliza \(A\).
 
-\textbf{Exercício:} Determine de
-\(\begin{bmatrix}0&1\\1&0\end{bmatrix}\) e
-\(\begin{bmatrix}0&-i\\i&0\end{bmatrix}\) compartilham ou não a mesma
-base de autovetores. Obtenha essas bases.
+\textbf{Exercício:} Determine se \(\sigma_{x}\) e \(\sigma_{y}\)
+compartilham ou não a mesma base de autovetores. Obtenha essas bases.
 
-    \subsection{Operadores unitários}\label{operadores-unituxe1rios}
+    \section{Operadores unitários}\label{operadores-unituxe1rios}
 
 São utilizados para descrever a dinâmica de sistemas quânticos. Um
 operador (ou matriz) \(A:\mathcal{H}\rightarrow\mathcal{H}\) é dito
 unitário se
 
 \begin{equation}
-A^{\dagger}\circ A = A\circ A^{\dagger}=\mathbb{I}_{\mathcal{H}},
+A^{\dagger}\circ A = A\circ A^{\dagger}=\mathbb{I}_{\mathcal{H}}.
 \end{equation}
 
-ou seja, o adjunto de um operador unitário é igual a sua inversa:
+Ou seja, o adjunto de um operador unitário é igual a sua inversa:
 \(A^{\dagger}=A^{-1}\).
 
-\textbf{Exercício:} Verifique que \(\det(A)=\pm1\) se \(A\) for uma
-matriz unitária.
+\textbf{Exercício:} Verifique que se \(A\) for uma matriz unitária então
+\(\det(A)=\pm1\).
 
 Algumas outras propriedades importantes de operadores unitários são as
 seguintes: 1. Operadores unitários preservam o produto interno. Ou seja,
 para \(\forall|v\rangle,|w\rangle\in\mathcal{H}\) teremos
 
-\begin{align}
-(A|v\rangle,A|w\rangle) & = (A^{\dagger}\circ A|v\rangle,|w\rangle) = (\mathbb{I}_{\mathcal{H}}|v\rangle,|w\rangle) \\
-& = (|v\rangle,|w\rangle).
-\end{align}
+\begin{equation}
+(A|v\rangle,A|w\rangle) = (A^{\dagger}\circ A|v\rangle,|w\rangle) = (\mathbb{I}_{\mathcal{H}}|v\rangle,|w\rangle) = (|v\rangle,|w\rangle).
+\end{equation}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1123,18 +1167,21 @@ para \(\forall|v\rangle,|w\rangle\in\mathcal{H}\) teremos
   calcule seus autovalores e os coloque na forma polar.
 \item
   O conjunto de vetores linha de uma matriz unitária
-  \(A\in\mathbb{C}^{d\text{x}d}\) é um conjunto ortonormal:
+  \(A\in\mathbb{C}^{n\text{x}n}\) é um conjunto ortonormal:
 
   \begin{align}
-  \langle L_{j}^{A}|L_{k}^{A}\rangle & = |L_{j}^{A}\rangle^{\dagger}L_{k}^{A}\rangle  = \begin{bmatrix}A_{j,1}^{*} & A_{j,2}^{*} & \cdots & A_{j,d}^{*}\end{bmatrix}\begin{bmatrix}A_{k,1} \\ A_{k,2} \\ \vdots \\ A_{k,d}\end{bmatrix} \\
-  & = A_{j,1}^{*}A_{k,1}+A_{j,2}^{*}A_{k,2}+\cdots+A_{j,d}^{*}A_{k,d} = \sum_{l=1}^{d}A_{k,l}(A^{\dagger})_{l,j} \\
-  & = (AA^{\dagger})_{k,j} = (\mathbb{I}_{d})_{k,j} \\
+  \langle L_{j}^{A}|L_{k}^{A}\rangle & = |L_{j}^{A}\rangle^{\dagger}L_{k}^{A}\rangle  = \begin{bmatrix}A_{j,1}^{*} & A_{j,2}^{*} & \cdots & A_{j,n}^{*}\end{bmatrix}\begin{bmatrix}A_{k,1} \\ A_{k,2} \\ \vdots \\ A_{k,n}\end{bmatrix} \\
+  & = A_{j,1}^{*}A_{k,1}+A_{j,2}^{*}A_{k,2}+\cdots+A_{j,n}^{*}A_{k,n} = \sum_{l=1}^{n}A_{k,l}(A^{\dagger})_{l,j} = (AA^{\dagger})_{k,j} = (\mathbb{I}_{n})_{k,j} \\ 
   & = \delta_{k,j}.
   \end{align}
 
   \textbf{Exercício:} Faça a verificação análoga para o conjunto de
   vetores coluna de uma matriz unitária.
 \end{enumerate}
+
+\textbf{Exercício:} Se lhes é fornecida uma matriz \(A\) cujos vetores
+coluna formam uma base LI, qual procedimento podemos utilizar para obter
+uma matriz unitária a partir de \(A\).
 
 
     % Add a bibliography block to the postdoc
