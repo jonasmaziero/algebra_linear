@@ -6,3 +6,5 @@ pela prova de que para a função sgn é equivalente por troca de pares distante
 pela prova que 0|v>=|0>, e pela propriedade relacionada: (a+b)|v>=a|v>+b|v>.
 - André Kaipper,
 pela verificação de (A\otimes B)(C\otimes D)=(AC)\otimes(BD).
+- Victor Ferreira Dos Santos
+por apontar uma falha na demonstração (excluída das notas de aula) sobre os autovetores da adjunta.
