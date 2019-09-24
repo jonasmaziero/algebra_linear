@@ -1,0 +1,948 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{05\_composite}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{Notas de aula: Álgebra Linear, Autor: Jonas Maziero,
+Departamento de Física,
+UFSM}\label{notas-de-aula-uxe1lgebra-linear-autor-jonas-maziero-departamento-de-fuxedsica-ufsm}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{\PYZpc{}}\PY{k}{run} init.ipynb
+\end{Verbatim}
+
+
+    \section{Espaços compostos}\label{espauxe7os-compostos}
+
+Para a descrição de sistemas constituídos por "muitas partículas",
+precisaremos do conceito de espaços compostos. Considere dois espaços de
+Hilbert \(\mathcal{H}_{a}\) e \(\mathcal{H}_{b}\) com bases respectivas
+\(\{|a_{j}\rangle\}_{j=1}^{\dim \mathcal{H}_{a}}\) e
+\(\{|b_{j}\rangle\}_{j=1}^{\dim \mathcal{H}_{b}}\). A composição dos
+dois espaços nos fornece um espaço de Hilbert "maior" denotado por
+
+\begin{equation}
+\mathcal{H}_{ab}=\mathcal{H}_{a}\otimes\mathcal{H}_{b}.
+\end{equation}
+
+Uma base para o espaço composto pode ser obtida através do produto
+tensorial (ou produto de Kronecker ou produto direto) dos vetores das
+bases individuais:
+
+\begin{equation}
+|c_{jk}\rangle:=|a_{j}\rangle\otimes|b_{k}\rangle,
+\end{equation}
+
+para \(j=1,\cdots,\dim\mathcal{H}_{a}\) e
+\(k=1,\cdots,\dim\mathcal{H}_{b}\).
+
+    \subsubsection{Produto tensorial}\label{produto-tensorial}
+
+O produto tensorial de duas matrizes \(A\in\mathbb{C}^{m\mathrm{x}n}\) e
+\(B\in\mathbb{C}^{p\mathrm{x}q}\) é uma matriz \(mp\mathrm{x}nq\)
+definida como:
+
+\begin{equation}
+A\otimes B = \begin{bmatrix}A_{1,1} & A_{1,2} & \cdots & A_{1,d_{a}} \\ A_{2,1} & A_{2,2} & \cdots & A_{2,d_{a}} \\ \vdots & \vdots & \cdots & \vdots \\ A_{d_{a},1} & A_{d_{a},2} & \cdots & A_{d_{a},d_{a}} \end{bmatrix}\otimes B := \begin{bmatrix}A_{1,1}B & A_{1,2}B & \cdots & A_{1,d_{a}}B \\ A_{2,1}B & A_{2,2}B & \cdots & A_{2,d_{a}}B \\ \vdots & \vdots & \cdots & \vdots \\ A_{d_{a},1}B & A_{d_{a},2}B & \cdots & A_{d_{a},d_{a}}B \end{bmatrix}.
+\end{equation}
+
+\textbf{Exemplo:} Consideremos
+
+\begin{align}
+A\otimes B & = \begin{bmatrix} A_{1,1} & A_{1,2} \\ A_{2,1} & A_{2,2} \end{bmatrix} \otimes \begin{bmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{bmatrix} = \begin{bmatrix} A_{1,1}\begin{bmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{bmatrix} & A_{1,2}\begin{bmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{bmatrix} \\ A_{2,1}\begin{bmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{bmatrix} & A_{2,2}\begin{bmatrix} B_{1,1} & B_{1,2} \\ B_{2,1} & B_{2,2} \end{bmatrix} \end{bmatrix}  \\ 
+& = \begin{bmatrix} A_{1,1}B_{1,1} & A_{1,1}B_{1,2} & A_{1,2}B_{1,1} & A_{1,2}B_{1,2} \\ A_{1,1}B_{2,1} & A_{1,1}B_{2,2} & A_{1,2}B_{2,1} & A_{1,2}B_{2,2}  \\ A_{2,1}B_{1,1} & A_{2,1}B_{1,2} & A_{2,2}B_{1,1} & A_{2,2}B_{1,2} \\ A_{2,1}B_{2,1} & A_{2,1}B_{2,2} & A_{2,2}B_{2,1} & A_{2,2}B_{2,2} \end{bmatrix}. 
+\end{align}
+
+\textbf{Exercício:} Calcule o produto tensorial
+\(\sigma_{x}\otimes\sigma_{y}=\begin{bmatrix}0&1\\1&0\end{bmatrix}\otimes\begin{bmatrix}0&-i\\i&0\end{bmatrix}\).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{A11}\PY{p}{,}\PY{n}{A12}\PY{p}{,}\PY{n}{A21}\PY{p}{,}\PY{n}{A22}\PY{p}{,}\PY{n}{B11}\PY{p}{,}\PY{n}{B12}\PY{p}{,}\PY{n}{B21}\PY{p}{,}\PY{n}{B22} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{A\PYZus{}11 A\PYZus{}12 A\PYZus{}21 A\PYZus{}22 B\PYZus{}11 B\PYZus{}12 B\PYZus{}21 B\PYZus{}22}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{A} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{A11}\PY{p}{,}\PY{n}{A12}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{A21}\PY{p}{,}\PY{n}{A22}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{B} \PY{o}{=} \PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{B11}\PY{p}{,}\PY{n}{B12}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{B21}\PY{p}{,}\PY{n}{B22}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{tp}\PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{B}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
+    
+    $$\left[\begin{matrix}A_{11} B_{11} & A_{11} B_{12} & A_{12} B_{11} & A_{12} B_{12}\\A_{11} B_{21} & A_{11} B_{22} & A_{12} B_{21} & A_{12} B_{22}\\A_{21} B_{11} & A_{21} B_{12} & A_{22} B_{11} & A_{22} B_{12}\\A_{21} B_{21} & A_{21} B_{22} & A_{22} B_{21} & A_{22} B_{22}\end{matrix}\right]$$
+
+    
+
+    \subsubsection{Propriedade importante de produto
+tensorial}\label{propriedade-importante-de-produto-tensorial}
+
+Vamos começar verificando que para quaisquer matrizes \(A,B,C,D\), com
+dimensões apropriadas para que as multiplicações matriciais envolvidas
+possam ser realizadas, teremos
+\((A\otimes B)(C\otimes D)=(AC\otimes BD)\). Faremos a verificação
+explícita
+
+\begin{align}
+(A\otimes B)(C\otimes D)& = \begin{bmatrix}A_{1,1}B & A_{1,2}B & \cdots \\ A_{2,1}B & A_{2,2}B & \cdots \\ \vdots & \vdots & \vdots\end{bmatrix} \begin{bmatrix}C_{1,1}D & C_{1,2}D & \cdots \\ C_{2,1}D & C_{2,2}D & \cdots \\ \vdots & \vdots & \vdots\end{bmatrix} \\
+& = \begin{bmatrix}(A_{1,1}BC_{1,1}D+A_{1,2}BC_{2,1}D+\cdots) & (A_{1,1}BC_{1,2}D+A_{1,2}BC_{2,2}D+\cdots)& \cdots \\ (A_{2,1}BC_{1,1}D+A_{2,2}BC_{2,1}D+\cdots) & (A_{2,1}BC_{1,2}D+A_{2,2}BC_{2,2}D+\cdots) & \cdots \\ \vdots & \vdots & \vdots\end{bmatrix} \\
+& = \begin{bmatrix}(A_{1,1}C_{1,1}+A_{1,2}C_{2,1}+\cdots)BD & (A_{1,1}C_{1,2}+A_{1,2}C_{2,2}+\cdots)BD & \cdots \\ (A_{2,1}C_{1,1}+A_{2,2}C_{2,1}+\cdots)BD & (A_{2,1}C_{1,2}+A_{2,2}C_{2,2}+\cdots)BD & \cdots \\ \vdots & \vdots & \vdots\end{bmatrix} \\
+& = \begin{bmatrix}(A_{1,1}C_{1,1}+A_{1,2}C_{2,1}+\cdots) & (A_{1,1}C_{1,2}+A_{1,2}C_{2,2}+\cdots) & \cdots \\ (A_{2,1}C_{1,1}+A_{2,2}C_{2,1}+\cdots) & (A_{2,1}C_{1,2}+A_{2,2}C_{2,2}+\cdots) & \cdots \\ \vdots & \vdots & \vdots\end{bmatrix}\otimes BD \\
+& = AC\otimes BD.
+\end{align}
+
+    \subsubsection{Construíndo bases compostas a partir de bases
+lindividuais}\label{construuxedndo-bases-compostas-a-partir-de-bases-lindividuais}
+
+Vemos que o produto interno de dois elemento da "base composta"
+\(|c_{lm}\rangle=|a_{l}\rangle\otimes|b_{m}\rangle\) é dado por:
+
+\begin{equation}
+\langle c_{jk}|c_{lm}\rangle = (\langle a_{j}|\otimes\langle b_{k}|)(|a_{l}\rangle\otimes|b_{m}\rangle) = \langle a_{j}|a_{l}\rangle\otimes\langle b_{k}|b_{m}\rangle = \delta_{j,l}\otimes\delta_{k,m} = \delta_{j,l}\delta_{k,m}.
+\end{equation}
+
+Por conseguinte, como os elementos de
+\(\{|a_{j}\rangle\otimes|b_{k}\rangle\}\) são ortogonais com relação aos
+dois índices, e por conseguinte:
+
+\begin{equation}
+d_{ab}\equiv\dim\mathcal{H}_{ab} = d_{a}d_{b}.
+\end{equation}
+
+    \subsubsection{Exemplo}\label{exemplo}
+
+Vamos considerar a base padrão para \(\mathbb{C}^{2}\)
+
+\begin{equation}
+|a_{1}\rangle=\begin{bmatrix}1\\0\end{bmatrix}\text{, }|a_{2}\rangle=\begin{bmatrix}0\\1\end{bmatrix}.
+\end{equation}
+
+Uma base para \(\mathbb{C}^{4}=\mathbb{C}^{2}\otimes\mathbb{C}^{2}\) é
+obtida como segue:
+
+\begin{align}
+& |c_{11}\rangle=|a_{1}\rangle\otimes|a_{1}\rangle=\begin{bmatrix}1|a_{1}\rangle\\0|a_{1}\rangle\end{bmatrix}=\begin{bmatrix}1\\0\\0\\0\end{bmatrix}, \\
+& |c_{12}\rangle=|a_{1}\rangle\otimes|a_{2}\rangle=\begin{bmatrix}1|a_{2}\rangle\\0|a_{2}\rangle\end{bmatrix}=\begin{bmatrix}0\\1\\0\\0\end{bmatrix}, \\
+& |c_{21}\rangle=|a_{2}\rangle\otimes|a_{1}\rangle=\begin{bmatrix}0|a_{1}\rangle\\1|a_{1}\rangle\end{bmatrix}=\begin{bmatrix}0\\0\\1\\0\end{bmatrix}, \\
+& |c_{22}\rangle=|a_{2}\rangle\otimes|a_{2}\rangle=\begin{bmatrix}0|a_{2}\rangle\\1|a_{2}\rangle\end{bmatrix}=\begin{bmatrix}0\\0\\0\\1\end{bmatrix}. \\
+\end{align}
+
+\textbf{Exercício:} Uma base para \(\mathbb{C}^{2\mathrm{x}2}\) é
+
+\begin{equation}
+A_{1}=\begin{bmatrix}1&0\\0&0\end{bmatrix}\text{, }A_{2}=\begin{bmatrix}0&1\\0&0\end{bmatrix}\text{, }A_{3}=\begin{bmatrix}0&0\\1&0\end{bmatrix}\text{, }A_{4}=\begin{bmatrix}0&0\\0&1\end{bmatrix}.
+\end{equation}
+
+Obtenha uma base para \(\mathbb{C}^{4\mathrm{x}4}\).
+
+    \textbf{Exercício:} Verifique que
+\(|a\rangle\otimes\langle b| = |a\rangle\langle b|\) para quaisquer dois
+vetores \(|a\rangle,|b\rangle\in\mathbb{C}^{n}\). Dica: Faça os dois
+produtos e verifique a igualdade.
+
+\textbf{Exercício:} Verifique que
+\((A\otimes B)^{\dagger}=A^{\dagger}\otimes B^{\dagger}\). Dica: Use a
+definição do adjunto e expanda os vetores usados no produto interno em
+uma base que é o produto tensorial de bases locais.
+
+    \section{Operadores positivos}\label{operadores-positivos}
+
+Um operador linear \(A:\mathcal{H}\rightarrow\mathcal{H}\) é dito
+positivo (positivo semidefinido, formalmente) se
+
+\begin{equation}
+\langle \psi|A|\psi\rangle\ge0\text{, }\forall|\psi\rangle\in\mathcal{H}.
+\end{equation}
+
+Quando essa condição é satisfeita, usamos a notação
+\(A\ge\mathbb{0}_{\mathcal{H}}\).
+
+Alguns resultados relevantes relacionados: 1. Se o operador \(A\) for
+positivo e normal, seus \textbf{autovalores} são não negativos pois
+
+\begin{align}
+\langle \psi|A|\psi\rangle & = \langle \psi|\sum_{a}aP_{a}|\psi\rangle = \sum_{a}a\langle \psi|P_{a}|\psi\rangle = \sum_{a}a\langle \psi|\langle a|\psi\rangle|a\rangle \\
+& = \sum_{a}a|\langle a|\psi\rangle|^{2} \ge 0.
+\end{align}
+
+E para garantir a não negatividade do "sanduíche", devemos ter
+\(a\ge0\text{, }\forall a\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Para um operador linear qualquer
+  \(B:\mathcal{H}\rightarrow\mathcal{H}\), temos que
+  \(A:=B^{\dagger}\circ B\) é um operador positivo pois
+
+  \begin{align}
+  & \langle \psi|A|\psi\rangle = (|\psi\rangle,|A|\psi\rangle) = (|\psi\rangle,B^{\dagger}\circ B|\psi\rangle) = (B|\psi\rangle,B|\psi\rangle) \\
+  & \equiv (|\phi\rangle,|\phi\rangle) \ge0.
+  \end{align}
+
+  \textbf{Exercício:} Da mesma forma, verifique que
+  \(B\circ B^{\dagger}\ge\mathbb{0}_{\mathcal{H}}\).
+\item
+  Para \(X,Y:\mathcal{H}\rightarrow\mathcal{H}\), ao escrevermos
+  \(X\ge Y\) queremos dizer que \(A:=X-Y\ge\mathbb{0}_{\mathcal{H}}\).
+  Se definimos o "valor médio" como:
+
+  \begin{equation}
+  \langle Z\rangle:=\sum_{j}p_{j}\langle\psi_{j}|Z|\psi_{j}\rangle
+  \end{equation}
+
+  com \(\{p_{j}\}\) sendo uma distribuição de probabilidades, i.e.,
+  \(p_{j}\ge 0\) e \(\sum_{j}p_{j}=1\), e \(\{|\psi_{j}\rangle\}\) é um
+  conjunto de vetores quaisquer, teremos que
+  \(X\ge Y\Rightarrow\langle X\rangle\ge\langle Y\rangle\). Para
+  verificar essa afirmação notemos que
+  \(X\ge Y\Rightarrow\langle\psi_{j}|( X- Y)|\psi_{j}\rangle\ge 0 \text{ }\forall |\psi_{j}\rangle\).
+  Mas
+
+  \begin{align}
+  \langle (X- Y)\rangle & = \sum_{j}p_{j}\langle\psi_{j}|( X- Y)|\psi_{j}\rangle = \sum_{j}p_{j}(\ge 0) \ge 0 \\
+  & = \sum_{j}p_{j}\langle\psi_{j}|X|\psi_{j}\rangle - \sum_{j}p_{j}\langle\psi_{j}|Y|\psi_{j}\rangle \\
+  & = \langle X\rangle - \langle Y\rangle.
+  \end{align}
+
+  Portanto
+  \(\langle X\rangle - \langle Y\rangle\ge 0\Rightarrow\langle X\rangle \ge \langle Y\rangle\).
+\end{enumerate}
+
+    \section{Representação produto
+externo}\label{representauxe7uxe3o-produto-externo}
+
+Considere um operador linear
+\(A:\mathbb{C}^{n}\rightarrow\mathbb{C}^{n}\) e uma base ortonormal
+\(|\beta_{j}\rangle\in\mathbb{C}^{n}\). Podemos escrever a representação
+produto externo de \(A\) da seguinte forma:
+
+\begin{align}
+A & = \mathbb{I}_{\mathbb{C}^{n}}A\mathbb{I}_{\mathbb{C}^{n}} = \sum_{j=1}^{n}|\beta_{j}\rangle\langle\beta_{j}|A\sum_{k=1}^{n}|\beta_{k}\rangle\langle\beta_{k}| \\
+& = \sum_{j,k=1}^{n}\langle\beta_{j}|A|\beta_{k}\rangle|\beta_{j}\rangle\langle\beta_{k}|.
+\end{align}
+
+\emph{OBS:} Cada termo do tipo \(|\beta_{j}\rangle\langle\beta_{k}|\) é
+chamado de \textbf{produto externo}, e é uma matriz \(n\mathrm{x}n\).
+Note que o projetor em \(\mathbb{C}^{n}\) também é um produto externo,
+mas nesse caso temos um único vetor envolvido.
+
+\textbf{Exercício:} Para o operador de inversão definido por
+\(A|e_{1}\rangle=|e_{2}\rangle\) e \(A|e_{2}\rangle=|e_{1}\rangle\),
+escreva sua representação produto externo (primeiramente com todos os
+termos, sejam eles nulos ou não).
+
+Consideremos agora o espaço composto
+\(\mathbb{C}^{n}\otimes\mathbb{C}^{m}\), um operador linear \(C\) neste
+espaço e duas bases ortonormais dos espaços individuais
+\(\{|\alpha_{j}\rangle\}_{j=1}^{n}\) e
+\(\{|\beta_{k}\rangle\}_{k=1}^{m}\). Analogamente ao que fizemos acima,
+podemos escrever a seguinte representação produto externo para \(C\)
+(\textbf{exercício}):
+
+\begin{align}
+C & = (\mathbb{I}_{\mathbb{C}^{n}}\otimes\mathbb{I}_{\mathbb{C}^{m}})C(\mathbb{I}_{\mathbb{C}^{n}}\otimes\mathbb{I}_{\mathbb{C}^{m}}) \\
+& = \sum_{j,p=1}^{n}\sum_{k,q=1}^{m}(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle)|\alpha_{j}\rangle\langle\alpha_{p}|\otimes|\beta_{k}\rangle\langle\beta_{q}|.
+\end{align}
+
+    \section{Traço parcial}\label{trauxe7o-parcial}
+
+Vimos que a função traço de uma operador linear
+\(B:\mathcal{H}_{b}\rightarrow\mathcal{H}_{b}\) podia ser escrita como
+\(Tr(B)=\sum_{j=1}^{d_{b}}\langle\beta_{j}|B|\beta_{j}\rangle\) com
+\(\{|\beta_{j}\rangle\}_{j=1}^{d_{b}}\) sendo uma base qualquer de
+\(\mathcal{H}_{b}\). Consideremos um operador linear atuando no espaço
+composto:
+\(C:\mathcal{H}_{a}\otimes\mathcal{H}_{b}\rightarrow\mathcal{H}_{a}\otimes\mathcal{H}_{b}\).
+A função traço parcial \(Tr_{b}\) é uma função que leva operador
+lineares definidos em \(\mathcal{H}_{a}\otimes\mathcal{H}_{b}\) em
+operadores lineares definidos em \(\mathcal{H}_{a}\) e é definida por
+{[}arXiv:1601.07458{]}:
+
+\begin{equation}
+Tr_{b}(C) := \sum_{l=1}^{d_{b}}(\mathbb{I}_{a}\otimes\langle\beta_{l}|)C(\mathbb{I}_{a}\otimes|\beta_{l}\rangle)
+\end{equation}
+
+Se aplicamos essa definição no operador \(C\),
+
+\begin{align}
+\mathrm{Tr}_{\mathbb{C}^{m}}(C) & = \sum_{l=1}^{m}\mathbb{I}_{\mathbb{C}^{n}}\otimes\langle\beta_{l}|\left(\sum_{j,p=1}^{n}\sum_{k,q=1}^{m}\left(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle\right)|\alpha_{j}\rangle\langle\alpha_{p}|\otimes |\beta_{k}\rangle\langle\beta_{q}|\right)\mathbb{I}_{\mathbb{C}^{n}}\otimes|\beta_{l}\rangle \\
+& = \sum_{l=1}^{m}\sum_{j,p=1}^{n}\sum_{k,q=1}^{m}\left(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle\right)(\mathbb{I}_{\mathbb{C}^{n}}\otimes\langle\beta_{l}|)(|\alpha_{j}\rangle\otimes|\beta_{k}\rangle)(\langle\alpha_{p}|\otimes\langle\beta_{q}|)(\mathbb{I}_{\mathbb{C}^{n}}\otimes|\beta_{l}\rangle) \\
+& = \sum_{l=1}^{m}\sum_{j,p=1}^{n}\sum_{k,q=1}^{m}\left(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle\right)(\mathbb{I}_{\mathbb{C}^{n}}|\alpha_{j}\rangle\otimes\langle\beta_{l}|\beta_{k}\rangle)(\langle\alpha_{p}|\mathbb{I}_{\mathbb{C}^{n}}\otimes\langle\beta_{q}|\beta_{l}\rangle) \\
+& = \sum_{j,p=1}^{n}\left(\sum_{l=1}^{m}\left(\langle\alpha_{j}|\otimes\langle\beta_{l}|)C(|\alpha_{p}\rangle\otimes|\beta_{l}\rangle\right)\right)|\alpha_{j}\rangle\langle\alpha_{p}| \\
+& =: \sum_{j,p=1}^{n}A_{j,p}|\alpha_{j}\rangle\langle\alpha_{p}|.
+\end{align}
+
+Ou seja, \(\mathrm{Tr}_{\mathbb{C}^{m}}\) leva operadores definidos em
+\(\mathbb{C}^{n}\otimes\mathbb{C}^{m}\) em operadores de
+\(\mathbb{C}^{n}\).
+
+    \subsubsection{Exemplo: Entropia das partes maior que a entropia do
+todo}\label{exemplo-entropia-das-partes-maior-que-a-entropia-do-todo}
+
+Seja \(|e_{1}\rangle,|e_{2}\rangle\in\mathbb{C}^{2}\) uma base
+ortonormal. Consideremos o projetor no vetor
+\(|\Psi\rangle=2^{-1/2}\left(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle\right)\)
+(chamado de estado singleto):
+
+\begin{align}
+P_{\Psi} &=|\Psi\rangle\langle\Psi| = |\Psi\rangle|\Psi\rangle^{\dagger}\\
+& = 2^{-1}(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle)(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle)^{\dagger} \\
+& = 2^{-1}(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle)((|e_{1}\rangle\otimes|e_{2}\rangle)^{\dagger}-(|e_{2}\rangle\otimes|e_{1}\rangle)^{\dagger}) \\
+& = 2^{-1}(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle)((|e_{1}\rangle)^{\dagger}\otimes(|e_{2}\rangle)^{\dagger}-(|e_{2}\rangle)^{\dagger}\otimes(|e_{1}\rangle)^{\dagger}) \\
+& = 2^{-1}(|e_{1}\rangle\otimes|e_{2}\rangle-|e_{2}\rangle\otimes|e_{1}\rangle)(\langle e_{1}|\otimes\langle e_{2}|-\langle e_{2}|\otimes\langle e_{1}|) \\
+& = 2^{-1}(|e_{1}\rangle\langle e_{1}|\otimes|e_{2}\rangle\langle e_{2}| - |e_{1}\rangle\langle e_{2}|\otimes|e_{2}\rangle\langle e_{1}|  - |e_{2}\rangle\langle e_{1}|\otimes|e_{1}\rangle\langle e_{2}| + |e_{2}\rangle\langle e_{2}|\otimes|e_{1}\rangle\langle e_{1}|).
+\end{align}
+
+Agora tomamos o traço parcial sobre o espaço da "direita=d":
+
+\begin{align}
+\mathrm{Tr}_{d}(P_{\Psi}) & = \sum_{j=1}^{2}(\mathbb{I}_{e}\otimes\langle e_{j}|)P_{\Psi}(\mathbb{I}_{e}\otimes|e_{j}\rangle) \\
+& = (\mathbb{I}_{e}\otimes\langle e_{1}|)P_{\Psi}(\mathbb{I}_{e}\otimes|e_{1}\rangle) + (\mathbb{I}_{e}\otimes\langle e_{2}|)P_{\Psi}(\mathbb{I}_{e}\otimes|e_{2}\rangle) \\
+& \vdots \\
+& = 2^{-1}(|e_{2}\rangle\langle e_{2}|+|e_{1}\rangle\langle e_{1}|) \\
+& = 2^{-1}\mathbb{I}_{\mathbb{C}^{2}}.
+\end{align}
+
+Como vimos ao discutir a entropia de von Neumann, teremos que
+\(S_{vn}(P_{\Psi})=0\) enquanto que
+\(S_{vn}(\mathrm{Tr}_{d}(P_{\Psi}))=S_{vn}(2^{-1}\mathbb{I}_{\mathbb{C}^{2}})=\log_{2}(2)=1\).
+
+\textbf{Exercício:} Calcule o traço parcial aplicado ao espaço da
+"esquerda" do projetor no vetor
+\(|\Phi\rangle=(|e_{1}\rangle\otimes|e_{1}\rangle+|e_{2}\rangle\otimes|e_{2}\rangle)/sqrt{2}\)
+(um dos estados do tripleto).
+
+    \section{Transposta parcial}\label{transposta-parcial}
+
+Por definição, os elementos da representação matricial de um operador
+linear \(A\) em uma base ortonormal \(\{|\alpha_{j}\rangle\}\) e a
+matriz transposta associada são relacionados por
+
+\begin{equation}
+\langle\alpha_{j}|A^{T}|\alpha_{k}\rangle = \langle\alpha_{k}|A|\alpha_{j}\rangle.
+\end{equation}
+
+Para \(c_{j,k}\) escalares, podemos obter essa mesma relação definindo a
+transposta via o seguinte mapa linear {[}arXiv:1609.00323{]}:
+
+\begin{equation}
+T(\sum_{j,k}c_{j,k}|\alpha_{j}\rangle\langle\alpha_{k}|):=\sum_{j,k}c_{j,k}T(|\alpha_{j}\rangle\langle\alpha_{k}|):=\sum_{j,k}c_{j,k}|\alpha_{k}\rangle\langle\alpha_{j}|.
+\end{equation}
+
+Para verificar essa afirmação, consideramos a representação produto
+externo
+\(A=\sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle|\alpha_{j}\rangle\langle\alpha_{k}|\)
+e atuamos essa função:
+
+\begin{align}
+T(A) & = T(\sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle|\alpha_{j}\rangle\langle\alpha_{k}|)  \\
+& = \sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle T(|\alpha_{j}\rangle\langle\alpha_{k}|)  \\
+& = \sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle |\alpha_{k}\rangle\langle\alpha_{j}|.
+\end{align}
+
+Assim,
+
+\begin{align}
+\langle\alpha_{p}|T(A)|\alpha_{q}\rangle & = \sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle \langle\alpha_{p}|\alpha_{k}\rangle\langle\alpha_{j}|\alpha_{q}\rangle \\
+& = \sum_{j,k}\langle\alpha_{j}|A|\alpha_{k}\rangle \delta_{p,k}\delta_{j,q} \\
+& = \langle\alpha_{q}|A|\alpha_{p}\rangle.
+\end{align}
+
+\emph{OBS:} Vimos que os autovalores da transposta são iguais aos
+autovalores da matriz original. Então, pelo motivo da transposta levar
+matrizes positivas em matrizes positivas, dizemos que ela é uma mapa
+positivo. Ou seja,
+
+\begin{equation}
+T(A)\ge\mathbb{0}_{\mathcal{H}}\text{ }\forall A\ge\mathbb{0}_{\mathcal{H}}.
+\end{equation}
+
+Quando aplicamos a um sistema composto, a função matricial
+\textbf{transposta parcial} é definida, quando aplicada ao espaço da
+"esquerda", como
+
+\begin{align}
+T_{e}(C) & := T\otimes id(C) \\
+& = \sum_{j,p=1}^{n}\sum_{k,q=1}^{m}(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle)T(|\alpha_{j}\rangle\langle\alpha_{p}|)\otimes id(|\beta_{k}\rangle\langle\beta_{q}|) \\
+& := \sum_{j,p=1}^{n}\sum_{k,q=1}^{m}(\langle\alpha_{j}|\otimes\langle\beta_{k}|)C(|\alpha_{p}\rangle\otimes|\beta_{q}\rangle)|\alpha_{p}\rangle\langle\alpha_{j}|)\otimes |\beta_{k}\rangle\langle\beta_{q}|.
+\end{align}
+
+E assim (\textbf{exercício})
+
+\begin{equation}
+(\langle\alpha_{r}|\otimes\langle\beta_{s}|)T_{e}(C)(|\alpha_{t}\rangle\otimes|\beta_{u}\rangle) = (\langle\alpha_{t}|\otimes\langle\beta_{s}|)T_{e}(C)(|\alpha_{r}\rangle\otimes|\beta_{u}\rangle).
+\end{equation}
+
+Dizemos que um mapa positivo \(M\) é \textbf{completamente positivo} se
+\(M\otimes id(C)\ge\mathbb{0}\text{ }\forall C\ge\mathbb{0}\). Uma
+propriedade importante da transposta é que esta função não é um mapa
+completamente positivo. Para verificar essa afirmação, consideremos
+
+\begin{align}
+T_{e}(P_{\Psi}) & = T(|e_{1}\rangle\langle e_{1}|)\otimes id(|e_{2}\rangle\langle e_{2}|) - T(|e_{1}\rangle\langle e_{2}|)\otimes id(|e_{2}\rangle\langle e_{1}|)  - T(|e_{2}\rangle\langle e_{1}|)\otimes id(|e_{1}\rangle\langle e_{2}|) + T(|e_{2}\rangle\langle e_{2}|)\otimes id(|e_{1}\rangle\langle e_{1}|) \\
+& = |e_{1}\rangle\langle e_{1}|\otimes|e_{2}\rangle\langle e_{2}| - |e_{2}\rangle\langle e_{1}|\otimes|e_{2}\rangle\langle e_{1}|  - |e_{1}\rangle\langle e_{2}|)\otimes|e_{1}\rangle\langle e_{2}| + |e_{2}\rangle\langle e_{2}|\otimes|e_{1}\rangle\langle e_{1}| \\
+& = \begin{bmatrix} 0&0&0&-1 \\ 0&1&0&0 \\ 0&0&1&0 \\ -1&0&0&0 \end{bmatrix},
+\end{align}
+
+com a representação matricial feita usando a base
+\(\{|e_{1}\rangle\otimes|e_{1}\rangle,|e_{1}\rangle\otimes|e_{2}\rangle,|e_{2}\rangle\otimes|e_{1}\rangle,|e_{2}\rangle\otimes|e_{2}\rangle\}\).
+Para exemplificar o cálculo dos elementos de matrix, usemos
+\((A\otimes B)(C\otimes D)=AC\otimes BD\) e consideremos explicitamente
+
+\begin{align}
+(\langle e_{1}|\otimes\langle e_{1}|)T_{e}(P_{\Psi})(|e_{1}\rangle\otimes|e_{1}\rangle) =
+& (\langle e_{1}|\otimes\langle e_{1}|)(|e_{1}\rangle\langle e_{1}|\otimes|e_{2}\rangle\langle e_{2}|)(|e_{1}\rangle\otimes|e_{1}\rangle) 
+ - (\langle e_{1}|\otimes\langle e_{1}|)(|e_{2}\rangle\langle e_{1}|\otimes|e_{2}\rangle\langle e_{1}|)(|e_{1}\rangle\otimes|e_{1}\rangle) \\
+& - (\langle e_{1}|\otimes\langle e_{1}|)(|e_{1}\rangle\langle e_{2}|)\otimes|e_{1}\rangle\langle e_{2}|)(|e_{1}\rangle\otimes|e_{1}\rangle) 
+ + (\langle e_{1}|\otimes\langle e_{1}|)(|e_{2}\rangle\langle e_{2}|\otimes|e_{1}\rangle\langle e_{1}|)(|e_{1}\rangle\otimes|e_{1}\rangle) \\
+ = & \langle e_{1}|e_{1}\rangle\langle e_{1}|e_{1}\rangle\otimes\langle e_{1}|e_{2}\rangle\langle e_{2}|e_{1}\rangle 
+ - \langle e_{1}|e_{2}\rangle\langle e_{1}|e_{1}\rangle\otimes\langle e_{1}|e_{2}\rangle\langle e_{1}||e_{1}\rangle \\
+& - \langle e_{1}|e_{1}\rangle\langle e_{2}|e_{1}\rangle\otimes\langle e_{1}|e_{1}\rangle\langle e_{2}|e_{1}\rangle 
+ + \langle e_{1}|e_{2}\rangle\langle e_{2}|e_{1}\rangle\otimes\langle e_{1}|e_{1}\rangle\langle e_{1}|e_{1}\rangle \\
+ &= 0.
+\end{align}
+
+Como pode ser visto abaixo, \(T_{e}(P_{\Psi})\) possui um autovalor
+negativo equanto que os autovalores de \(P_{\Psi}\) são todos positivos
+ou nulos.
+
+\textbf{Exercício:} Calcule os autovalores de \(P_{\Phi}\) e de
+\(T_{d}(P_{\Phi})\), usando expansão em cofatores para o determinante.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} pra T\PYZus{}\PYZob{}e\PYZcb{}(P\PYZus{}\PYZob{}Psi\PYZcb{})}
+         \PY{n}{A}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}A}
+         \PY{n}{A}\PY{o}{.}\PY{n}{eigenvects}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}18}]:}
+    
+    $$\left [ \left ( -1, \quad 1, \quad \left [ \left[\begin{matrix}1\\0\\0\\1\end{matrix}\right]\right ]\right ), \quad \left ( 1, \quad 3, \quad \left [ \left[\begin{matrix}0\\1\\0\\0\end{matrix}\right], \quad \left[\begin{matrix}0\\0\\1\\0\end{matrix}\right], \quad \left[\begin{matrix}-1\\0\\0\\1\end{matrix}\right]\right ]\right )\right ]$$
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} pra P\PYZus{}\PYZob{}Psi\PYZcb{}}
+         \PY{n}{A}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}A}
+         \PY{n}{A}\PY{o}{.}\PY{n}{eigenvects}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\texttt{\color{outcolor}Out[{\color{outcolor}19}]:}
+    
+    $$\left [ \left ( 0, \quad 3, \quad \left [ \left[\begin{matrix}1\\0\\0\\0\end{matrix}\right], \quad \left[\begin{matrix}0\\-1\\1\\0\end{matrix}\right], \quad \left[\begin{matrix}0\\0\\0\\1\end{matrix}\right]\right ]\right ), \quad \left ( 2, \quad 1, \quad \left [ \left[\begin{matrix}0\\1\\1\\0\end{matrix}\right]\right ]\right )\right ]$$
+
+    
+
+    \section{Inversa do produto}\label{inversa-do-produto}
+
+Consideremos duas matrizes quadradas \(A\) e \(B\) invertíveis. Teremos
+assim que
+
+\begin{align}
+&(AB)^{-1}(AB)=\mathbb{I}\Rightarrow (AB)^{-1}ABB^{-1}=\mathbb{I}B^{-1} \\
+&\Rightarrow (AB)^{-1}A\mathbb{I}A^{-1}=B^{-1}A^{-1}\Rightarrow (AB)^{-1}\mathbb{I}=B^{-1}A^{-1}.
+\end{align}
+
+Ou seja,
+
+\begin{equation}
+(AB)^{-1}=B^{-1}A^{-1}.
+\end{equation}
+
+    \section{Teorema (decomposição
+polar)}\label{teorema-decomposiuxe7uxe3o-polar}
+
+Para uma matriz quadrada qualquer \(A\), podemos escrever
+
+\begin{equation}
+A=UJ=KV,
+\end{equation}
+
+com \(U\) e \(V\) sendo matrizes unitárias e \(J=\sqrt{A^{\dagger}A}\) e
+\(K=\sqrt{AA^{\dagger}}\) são matrizes positivas. Além disso, se existir
+a inversa de \(A\), então \(U=AJ^{-1}\).
+
+\subsection{Prova}\label{prova}
+
+Vamos provar esse resultando mostrando que a ação de \(A\) e de \(UJ\) é
+a mesma, para a definição conveniente de \(U\). Como \(J\) é positiva,
+podemos escrever a decomposição espectral
+\(J=\sum_{j}\lambda_{j}|j\rangle\langle j|\). Vamos definir a ação de
+\(A\) nos autovetores de \(J\) como segue:
+
+\begin{equation}
+A|j\rangle=:|\psi_{j}\rangle.
+\end{equation}
+
+Agora, de
+\(A^{\dagger}A=(UJ)^{\dagger}(UJ)=J^{\dagger}U^{\dagger}UJ=J^{2}\) vem
+que
+
+\begin{align}
+(|\psi_{j}\rangle,|\psi_{k}\rangle) & = (A|j\rangle,A|k\rangle) = (A^{\dagger}A|j\rangle,|k\rangle) \\
+& = (J^{2}|j\rangle,|k\rangle) = (\lambda_{j}^{2}|j\rangle,|k\rangle) = \lambda_{j}^{2}(|j\rangle,|k\rangle) \\
+& = \lambda_{j}^{2}\delta_{j,k}.
+\end{align}
+
+Então, para \(\lambda_{j}>0\) podemos definir o seguinte conjunto
+ortonormal de vetores:
+
+\begin{equation}
+|e_{j}\rangle := \frac{|\psi_{j}\rangle}{||\psi_{j}||} = \frac{|\psi_{j}\rangle}{\sqrt{\langle\psi_{j}|\psi_{j}\rangle}}=\frac{|\psi_{j}\rangle}{\lambda_{j}}.
+\end{equation}
+
+Podemos aplicar o procedimento de Gram-Schmidt para completar a base
+ortonormal \(|e_{j}\rangle\) usando vetores LI no subespaço gerado pelo
+autovetores de \(J\) correspondentes a \(\lambda_{j}=0\). Tendo essa
+base, definimos o operador unitário
+
+\begin{equation}
+U:=\sum_{j}|e_{j}\rangle\langle j|.
+\end{equation}
+
+\textbf{Exercício:} Verificar que esse operador é unitário.
+
+Agora, para a ação dos operadores, teremos
+
+\begin{align}
+& \lambda_{j}>0: \\
+& UJ|j\rangle = \sum_{k}|e_{k}\rangle\langle k|\lambda_{j}|j\rangle = \lambda_{j}\sum_{k}|e_{k}\rangle\langle k|j\rangle = \lambda_{j}|e_{j}\rangle = |\psi_{j}\rangle. \\
+& \lambda_{j}=0: \\
+& UJ|j\rangle = U\lambda_{j}|j\rangle = U0|j\rangle  = |\oslash\rangle = |\psi_{j}\rangle, \\
+\end{align}
+
+pois
+\(\langle\psi_{j}|\psi_{j}\rangle=\lambda_{j}^{2}=0\Rightarrow|\psi_{j}\rangle=|\oslash\rangle\).
+
+\textbf{Exercício:} Verificar que se \(J\) é uma matriz positiva e \(U\)
+é uma matriz unitária, então \(UJU^{\dagger}\) também é uma matriz
+positiva. \textbf{Exercício:} Prove a decomposição polar direita
+\(A=KV\).
+
+Vamos assumir agora que \(\det(A)\ne 0\). Assim teremos que
+
+\begin{align}
+A^{-1}A & = (UJ)^{-1}(UJ)=J^{-1}U^{-1}UJ=J^{-1}\mathbb{I}J \\
+&= J^{-1}J=\mathbb{I}.
+\end{align}
+
+Vemos assim que se \(A\) possui inversa, então \(J\) também possui
+inversa. Agora, de \(A=UJ\) temos \(AJ^{-1}=UJJ^{-1}\) e
+
+\begin{equation}
+U=AJ^{-1}.
+\end{equation}
+
+Concluimos assim a prova do teorema.
+
+    \section{Teorema (decomposição em valores
+singulares)}\label{teorema-decomposiuxe7uxe3o-em-valores-singulares}
+
+Para qualquer matriz \(A\), existem matrizes unitárias \(U\) e \(W\) e
+uma matriz positiva \(D\) diagonal na base padrão \(\{|c_{j}\rangle\}\)
+tais que
+
+\begin{equation}
+A = UDW.
+\end{equation}
+
+\subsection{Prova}\label{prova}
+
+Pela decomposição polar, temos que \(A=SJ\) com
+\(J=\sqrt{A^{\dagger}A}\) e \(S^{\dagger}=S^{-1}\). Agora, usamos uma
+matriz unitária \(W\) que leva os autovetores de
+\(J=\sum_{j}\lambda_{j}|j\rangle\langle j|\) em vetores da base padrão
+\(\{|c_{j}\rangle\}\), i.e.,
+\(W=\sum_{k}|c_{k}\rangle\langle k|\Rightarrow W|j\rangle=|c_{j}\rangle\)
+e
+
+\begin{equation}
+D:=WJW^{\dagger}=\sum_{j}\lambda_{j}W|j\rangle\langle j|W^{\dagger}=:\sum_{j}\lambda_{j}|c_{j}\rangle\langle c_{j}|.
+\end{equation}
+
+Assim \(W^{\dagger}DW=W^{\dagger}WJW^{\dagger}W=J\) e
+
+\begin{equation}
+A=SJ=SW^{\dagger}DW=:UDW,
+\end{equation}
+
+completando assim a prova do teorema.
+
+\textbf{Exercício:} Verifique que o adjunto de uma matriz unitária é uma
+matriz unitária. \textbf{Exercício:} Verifique que o produto de duas
+matrizes unitárias é uma matriz unitária.
+
+    \section{Teorema (decomposição de
+Schmidt)}\label{teorema-decomposiuxe7uxe3o-de-schmidt}
+
+Consideremos um vetor qualquer de
+\(mathcal{H}_{a}\otimes\mathcal{H}_{b}\):
+
+\begin{equation}
+|\Psi\rangle = \sum_{j,k}c_{j,k}|\alpha_{j}\rangle\otimes|\beta_{k}\rangle,
+\end{equation}
+
+decomposto em uma base composta ortonormal (aqui temos
+\(\dim\mathcal{H}_{a}\dim\mathcal{H}_{b}\) coeficientes não nulos).
+Existem bases ortonormais dos espaços individuais tais que
+
+\begin{equation}
+|\Psi\rangle = \sum_{j}d_{j}|\tilde{\alpha}_{j}\rangle\otimes|\tilde{\beta}_{j}\rangle,
+\end{equation}
+
+em que \(d_{j}\) são os chamados coeficientes de Schmidt (aqui temos
+\(\min(\dim\mathcal{H}_{a},\dim\mathcal{H}_{b})\) coeficientes não
+nulos).
+
+\subsection{Prova}\label{prova}
+
+Usamos a decomposição em valores singulares para escrever a matriz de
+coeficientes
+
+\begin{align}
+c_{j,k}&=(UDV)_{j,k}=\sum_{l}(UD)_{j,l}V_{l,k}=\sum_{l,m}U_{j,m}D_{m,l}V_{l,k} \\
+&=:\sum_{l,m}U_{j,m}d_{l}\delta_{l,m}V_{l,k}=\sum_{l}U_{j,l}d_{l}V_{l,k}.
+\end{align}
+
+Assim
+
+\begin{align}
+|\Psi\rangle &= \sum_{j,k}\sum_{l}U_{j,l}d_{l}V_{l,k}|\alpha_{j}\rangle\otimes|\beta_{k}\rangle \\
+&= \sum_{l}d_{l}\sum_{j}U_{j,l}|\alpha_{j}\rangle\otimes\sum_{k}V_{l,k}|\beta_{k}\rangle \\
+& =: \sum_{l}d_{l}|\tilde{\alpha}_{l}\rangle\otimes|\tilde{\beta}_{l}\rangle.
+\end{align}
+
+Vamos verificar a ortonormalidade das bases que definimos. Teremos
+
+\begin{align}
+\langle\tilde{\alpha}_{j}|\tilde{\alpha}_{k}\rangle & = |\tilde{\alpha}_{j}\rangle^{\dagger}|\tilde{\alpha}_{k}\rangle \\
+& = \sum_{p}U_{p,j}^{*}|\alpha_{p}\rangle^{\dagger}\sum_{q}U_{q,k}|\alpha_{q}\rangle \\
+& = \sum_{p,q}U_{p,j}^{*}U_{q,k}\langle\alpha_{p}|\alpha_{q}\rangle \\
+& = \sum_{p,q}U_{p,j}^{*}U_{q,k}\delta_{p,q} \\
+& = \sum_{p}(U^{\dagger})_{j,p}U_{p,k} \\
+& = (U^{\dagger}U)_{j,k}=\delta_{j,k}.
+\end{align}
+
+\textbf{Exercício:} Verifique que \(\{|\tilde{\beta}_{k}\rangle\}\) é
+uma base ortonormal. Com isso, completamos a prova desse teorema.
+
+    \subsection{Obtendo a decomposição de
+Schmidt}\label{obtendo-a-decomposiuxe7uxe3o-de-schmidt}
+
+Para
+\(|\Psi\rangle = \sum_{j}d_{j}|\tilde{\alpha}_{j}\rangle\otimes|\tilde{\beta}_{j}\rangle\),
+teremos (\textbf{exercício}):
+
+\begin{equation}
+P_{\Psi}=\sum_{j,k}d_{j}d_{k}|\tilde{\alpha}_{j}\rangle\langle\tilde{\alpha}_{k}|\otimes|\tilde{\beta}_{j}\rangle\langle\tilde{\beta}_{k}|.
+\end{equation}
+
+Tomando o traço parcial sobre o sub-sistema da direita teremos
+
+\begin{align}
+E&:=Tr_{d}(P_{\Psi})=\sum_{j,k}d_{j}d_{k}|\tilde{\alpha}_{j}\rangle\langle\tilde{\alpha}_{k}|\otimes Tr(|\tilde{\beta}_{j}\rangle\langle\tilde{\beta}_{k}|) \\
+&=\sum_{j,k}d_{j}d_{k}|\tilde{\alpha}_{j}\rangle\langle\tilde{\alpha}_{k}|\otimes \langle\tilde{\beta}_{k}|\tilde{\beta}_{j}\rangle =\sum_{j,k}d_{j}d_{k}|\tilde{\alpha}_{j}\rangle\langle\tilde{\alpha}_{k}|\otimes\delta_{k,j}\\
+&=\sum_{j}d_{j}^{2}|\tilde{\alpha}_{j}\rangle\langle\tilde{\alpha}_{j}|.
+\end{align}
+
+\textbf{Exercício:} Verifique que
+\(D:=Tr_{e}(P_{\Psi})=\sum_{j}d_{j}^{2}|\tilde{\beta}_{j}\rangle\langle\tilde{\beta}_{j}|\).
+
+Com isso, teremos o seguinte \emph{algoritmo} para calcular a
+decomposição de Schmidt de um vetor \(|\Psi\rangle\) qualquer de um
+espaço composto \(\mathcal{H}_{a}\otimes\mathcal{H}_{b}\): 1. Calcule o
+projetor \(|\Psi\rangle\langle\Psi|\). 2. Obtenha as decomposições
+espectrais de \(E:=Tr_{e}(P_{\Psi})\) e de \(D:=Tr_{d}(P_{\Psi})\). 3.
+Os coeficientes de Schmidt são as raízes quadradas dos autovalores
+desses operadores (que possuem o mesmo espectro). As bases
+\(\{|\tilde{\alpha}_{j}\rangle\}\) e \(\{|\tilde{\beta}_{j}\rangle\}\)
+são as bases de autovetores de \(E\) e de \(D\), respectivamente.
+
+\emph{OBS:} Se as dimensões dos espaços forem diferentes, a soma vai até
+a menor dimensão, e o outro operador "local" deve necessariamente ter
+autovalores nulos (com degenerescência igual ou maior que a diferença
+entre as dimensões).
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
